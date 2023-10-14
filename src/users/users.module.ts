@@ -5,6 +5,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { Users } from './entities/user.entity';
 // JWT
 import { JwtModule } from '@nestjs/jwt';
+import { UsersMeController } from './userMe.controller';
+import { UsersMeService } from './usersMe.service';
 
 const schema = [
   Users
@@ -19,7 +21,7 @@ const schema = [
       signOptions: { expiresIn: '60s' },
     }),
   ],
-  controllers: [UsersController],
-  providers: [UsersService],
+  controllers: [UsersController, UsersMeController],
+  providers: [UsersService, UsersMeService],
 })
 export class UsersModule {}

@@ -5,8 +5,6 @@ import {
   UnauthorizedException,
 } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
-import { Observable } from 'rxjs';
-import Jwt from 'jsonwebtoken';
 import { JwtService } from '@nestjs/jwt';
 // Silf Classes
 import { Roles } from './roles.decorator';
@@ -35,11 +33,11 @@ export class UsersGuard implements CanActivate {
       const payload = await this.jwtService.verifyAsync(token, {
         secret: process.env.JWT_SECRET,
       });
-      console.log(payload);
-return true
-      // 💡 We're assigning the payload to the request object here
-      // so that we can access it in our route handlers
-      request['user'] = payload;
+      if (roles.includes(payload.role.toLowerCase())) {
+        return true;
+      } else {
+        throw new UnauthorizedException();
+      }
     } catch {
       throw new UnauthorizedException();
     }

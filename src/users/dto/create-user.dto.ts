@@ -36,7 +36,7 @@ export class CreateUserDto {
   @IsEnum(['admin', 'manger', 'user'], {
     message: 'role must be one of the following values: admin, manger, user',
   })
-  role: 'user';
+  role: string;
   // Age Column
 
   @IsOptional()
@@ -58,5 +58,5 @@ export class CreateUserDto {
   // Active Column
   @IsOptional()
   @IsEnum([true, false])
-  active: true;
+  active: boolean;
 }

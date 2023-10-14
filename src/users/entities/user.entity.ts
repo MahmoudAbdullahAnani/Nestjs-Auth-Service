@@ -22,7 +22,7 @@ export class Users {
   password: string;
   // role Column
   @Column()
-  role: 'user';
+  role: string;
   // Age Column
   @Column()
   age: number;
@@ -34,5 +34,5 @@ export class Users {
   address: string;
   // Active Column
   @Column()
-  active: true;
+  active: boolean;
 }
