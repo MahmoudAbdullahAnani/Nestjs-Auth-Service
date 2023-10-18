@@ -1,4 +1,4 @@
-import { Column, Entity } from 'typeorm';
+import { Column, Entity, Index } from 'typeorm';
 
 @Entity()
 export class Users {
@@ -12,10 +12,12 @@ export class Users {
   @Column()
   lastName: string;
   // email Column
+
   @Column()
   email: string;
   // userName Column
   @Column()
+  // @Index({ unique: true })
   userName: string;
   // password Column
   @Column()

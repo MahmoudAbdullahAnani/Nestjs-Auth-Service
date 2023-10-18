@@ -1,8 +1,8 @@
 import { Injectable, Req, UnauthorizedException } from '@nestjs/common';
-import { CreateUserDto } from './dto/create-user.dto';
-import { UpdateUserDto } from './dto/update-user.dto';
+import { CreateUserDto } from '../dto/create-user.dto';
+import { UpdateUserDto } from '../dto/update-user.dto';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Users } from './entities/user.entity';
+import { Users } from '../entities/user.entity';
 import { Repository } from 'typeorm';
 import { JwtService } from '@nestjs/jwt';
 
@@ -31,7 +31,7 @@ export class UsersMeService {
 
   async update(req: any, updateUserDto: UpdateUserDto): Promise<UpdateUserDto> {
     const token = req.headers?.authorization.split(' ')[1];
-    
+
     if (!token) {
       throw new UnauthorizedException();
     }
@@ -40,7 +40,7 @@ export class UsersMeService {
         secret: process.env.JWT_SECRET,
       });
       const user = await this.findOne(req);
-      
+
       return await this.usersRepository.save({ ...user, ...updateUserDto });
     } catch {
       throw new UnauthorizedException();

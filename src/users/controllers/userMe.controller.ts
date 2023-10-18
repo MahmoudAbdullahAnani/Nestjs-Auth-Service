@@ -7,10 +7,10 @@ import {
   UseGuards,
   Req,
 } from '@nestjs/common';
-import { UsersMeService } from './usersMe.service';
-import { UpdateUserDto } from './dto/update-user.dto';
-import { UsersGuard } from './guards/users.guard';
-import { Roles } from './guards/roles.decorator';
+import { UsersMeService } from '../services/usersMe.service';
+import { UpdateUserDto } from '../dto/update-user.dto';
+import { UsersGuard } from '../guards/users.guard';
+import { Roles } from '../guards/roles.decorator';
 
 @Controller('me')
 @UseGuards(UsersGuard)

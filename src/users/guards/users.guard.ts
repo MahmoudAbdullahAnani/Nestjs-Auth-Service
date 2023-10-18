@@ -26,9 +26,12 @@ export class UsersGuard implements CanActivate {
     const token = request.headers.authorization.split(' ', 2)[1];
     // Verify Token
     // const token = this.extractTokenFromHeader(request);
+    // console.log(token);
+
     if (!token) {
       throw new UnauthorizedException();
     }
+
     try {
       const payload = await this.jwtService.verifyAsync(token, {
         secret: process.env.JWT_SECRET,

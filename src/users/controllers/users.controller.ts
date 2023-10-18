@@ -10,11 +10,11 @@ import {
   ValidationPipe,
   HttpCode,
 } from '@nestjs/common';
-import { UsersService } from './users.service';
-import { CreateUserDto } from './dto/create-user.dto';
-import { UpdateUserDto } from './dto/update-user.dto';
-import { UsersGuard } from './guards/users.guard';
-import { Roles } from './guards/roles.decorator';
+import { UsersService } from '../services/users.service';
+import { CreateUserDto } from '../dto/create-user.dto';
+import { UpdateUserDto } from '../dto/update-user.dto';
+import { UsersGuard } from '../guards/users.guard';
+import { Roles } from '../guards/roles.decorator';
 
 @Controller('users')
 @UseGuards(UsersGuard)
