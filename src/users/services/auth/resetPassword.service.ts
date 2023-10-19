@@ -143,11 +143,11 @@ export class ResetPasswordService {
     }
     const salt = await bcrypt.genSalt(10);
     const bcryptPassword = await bcrypt.hash(password, salt);
-    await this.usersRepository.save({
+    const newData = await this.usersRepository.save({
       ...user,
       password: bcryptPassword,
       verificationCode:"",
     });
-    return user;
+    return newData;
   }
 }

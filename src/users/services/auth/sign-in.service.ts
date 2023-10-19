@@ -11,6 +11,7 @@ import { Users } from '../../entities/user.entity';
 import { Repository } from 'typeorm';
 import { JwtService } from '@nestjs/jwt';
 import { Login } from 'src/users/dto/auth.user.dto';
+import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class SigninService {
@@ -23,13 +24,17 @@ export class SigninService {
     const user = await this.usersRepository.findOne({
       where: {
         userName: login.userName,
-        password: login.password,
       },
     });
     // User exist
     if (!user) {
       throw new HttpException('Incorrect Data', 400);
     }
+    const verifyPassword = await bcrypt.compare(login.password, user.password);
+    if (!verifyPassword) {
+      throw new HttpException('Incorrect Data', 400);
+    }
+
     // check if user notactive then=> active this is user
     if (!user.active) {
       await this.usersRepository.save({ ...user, active: true });

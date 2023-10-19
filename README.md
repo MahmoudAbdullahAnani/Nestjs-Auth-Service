@@ -22,6 +22,10 @@
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
+## Postman Docs
+
+<a href="https://documenter.getpostman.com/view/23028124/2s9YRB1B7M#30e716df-c5e6-4da5-afc8-3ea973503e8a" target="_blank">Nestjs Auth-Service</a>
+
 ## Description
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
