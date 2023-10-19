@@ -10,7 +10,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Users } from '../../entities/user.entity';
 import { Repository } from 'typeorm';
 import { JwtService } from '@nestjs/jwt';
-
+import bcrypt from 'bcrypt';
 @Injectable()
 export class SignupService {
   constructor(
@@ -40,7 +40,14 @@ export class SignupService {
     }
 
     // Create User
-    const newUser = await this.usersRepository.create(createUserDto);
+    // Hashing Password
+    // Save verificationCode in DB
+    const salt = await bcrypt.genSalt(10);
+    const password = await bcrypt.hash(createUserDto.password, salt);
+    const newUser = await this.usersRepository.create({
+      ...createUserDto,
+      password,
+    });
     const newUserData = await this.usersRepository.save({
       ...newUser,
       role: 'user',

@@ -37,4 +37,7 @@ export class Users {
   // Active Column
   @Column()
   active: boolean;
+  // verificationCode Column
+  @Column()
+  verificationCode: string;
 }

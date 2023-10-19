@@ -11,6 +11,9 @@ import { SingupController } from './controllers/auth/sign-up.controller';
 import { SignupService } from './services/auth/sign-up.service';
 import { SinginController } from './controllers/auth/sign-in.controller';
 import { SigninService } from './services/auth/sign-in.service';
+import { EmailService } from './email.service';
+import { ResetPasswordController, UpdatePasswordController, VerifyCodeController } from './controllers/auth/resetPassword.controller';
+import { ResetPasswordService } from './services/auth/resetPassword.service';
 
 const schema = [Users];
 
@@ -28,7 +31,17 @@ const schema = [Users];
     UsersMeController,
     SingupController,
     SinginController,
+    ResetPasswordController,
+    VerifyCodeController,
+    UpdatePasswordController,
   ],
-  providers: [UsersService, UsersMeService, SignupService, SigninService],
+  providers: [
+    UsersService,
+    UsersMeService,
+    SignupService,
+    SigninService,
+    ResetPasswordService,
+    EmailService,
+  ],
 })
 export class UsersModule {}
