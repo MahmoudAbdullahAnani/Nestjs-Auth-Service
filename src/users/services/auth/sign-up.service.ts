@@ -38,7 +38,6 @@ export class SignupService {
         );
       }
     }
-
     // Create User
     // Hashing Password
     // Save verificationCode in DB
